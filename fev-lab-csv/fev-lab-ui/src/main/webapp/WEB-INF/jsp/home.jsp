@@ -47,7 +47,7 @@
         </tr>
         <tr>
           <td><button id="saveFileReq">Save File</button></td>
-          <td><input id="fileName" type="text" value="example_small.cs"/></td>
+          <td><input id="fileName" type="text" value="example_small.csv"/></td>
         </tr>
         <tr>
           <td></td>
