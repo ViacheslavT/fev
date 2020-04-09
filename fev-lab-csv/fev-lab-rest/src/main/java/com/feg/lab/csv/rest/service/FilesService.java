@@ -12,6 +12,7 @@ import java.util.List;
  */
 public interface FilesService {
 
+    void removeAll();
     FilesToLoadRS getAllFilesToLoad();
     void uploadFile(final MultipartFile file);
     void saveFile(final String fileName);
@@ -19,5 +20,5 @@ public interface FilesService {
     RecordsRS getRecordsByHeadersAndLimit(int count, final List<String> headersNames);
     RecordsRS getAllRecords();
     RecordsRS getAllRecords(int count);
-    RecordsRS getNumericRecords(int count);
+    RecordsRS getNumericRecords(int count, final List<String> headers);
 }

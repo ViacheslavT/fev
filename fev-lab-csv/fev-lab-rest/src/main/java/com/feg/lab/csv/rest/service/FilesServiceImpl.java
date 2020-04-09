@@ -47,6 +47,11 @@ public class FilesServiceImpl implements FilesService {
     }
 
     @Override
+    public void removeAll() {
+        filesRepository.removeAll();
+    }
+
+    @Override
     public FilesToLoadRS getAllFilesToLoad() {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         URL url = loader.getResource(filesToLoadPath);
@@ -107,9 +112,9 @@ public class FilesServiceImpl implements FilesService {
     }
 
     @Override
-    public RecordsRS getNumericRecords(int count) {
+    public RecordsRS getNumericRecords(int count, final List<String> headers) {
         RecordsRS response = new RecordsRS();
-        response.setRecords(filesRepository.returnNumeric(count));
+        response.setRecords(filesRepository.returnNumeric(headers, count));
         return response;
     }
 

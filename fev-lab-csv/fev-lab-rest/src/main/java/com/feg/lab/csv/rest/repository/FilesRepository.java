@@ -10,11 +10,12 @@ import java.util.List;
  */
 public interface FilesRepository {
 
+    void removeAll();
     List<Record> findAll();
     List<Record> findAll(final int count);
     void saveAll(final List<Record> records);
     void save(final Record record);
     List<Record> returnByHeaders(final List<String> headersNames);
     List<Record> returnByHeadersAndLimit(final List<String> headersNames, final int count);
-    List<Record> returnNumeric(final int count);
+    List<Record> returnNumeric(final List<String> headersNames, final int count);
 }

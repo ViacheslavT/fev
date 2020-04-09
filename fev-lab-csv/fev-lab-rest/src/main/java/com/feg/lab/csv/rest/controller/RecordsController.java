@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,10 +50,18 @@ public class RecordsController implements RecordsApi {
 
     @Override
     @GetMapping(value = "/numeric", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RecordsRS> getNumericRecords(@RequestParam(value = "count", required = false) Integer count) {
+    public ResponseEntity<RecordsRS> getNumericRecords(@RequestParam(value = "count", required = false) Integer count,
+                                                       @RequestParam(value = "headers", required = false) final List<String> headers) {
         if (count == null) {
             count = 0;
         }
-        return ResponseEntity.ok(filesService.getNumericRecords(count));
+        return ResponseEntity.ok(filesService.getNumericRecords(count, headers));
+    }
+
+    @Override
+    @DeleteMapping("/delete")
+    public ResponseEntity<Void> removeAll() {
+        filesService.removeAll();
+        return ResponseEntity.ok().build();
     }
 }

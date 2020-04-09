@@ -18,6 +18,11 @@ public class FilesRepositoryImpl implements FilesRepository {
     private static List<Record> recordsStorage = new ArrayList<>();
 
     @Override
+    public void removeAll() {
+        recordsStorage.clear();
+    }
+
+    @Override
     public List<Record> findAll() {
         return recordsStorage;
     }
@@ -54,16 +59,23 @@ public class FilesRepositoryImpl implements FilesRepository {
     }
 
     @Override
-    public List<Record> returnNumeric(int count) {
+    public List<Record> returnNumeric(final List<String> headersNames, int count) {
         List<Record> records = recordsStorage.stream().peek(
                 record -> record.setRecords(
                         record.getRecords().stream()
                                 .filter(BaseRecord::isNumeric)
+                                .filter(rec -> {
+                                    if (headersNames != null) {
+                                        return headersNames.contains(rec.getName());
+                                    } else {
+                                        return true;
+                                    }
+                                })
                                 .collect(Collectors.toList())
                 )
         ).collect(Collectors.toList());
         if (count > 0) {
-            records = recordsStorage.stream().limit(count).collect(Collectors.toList());
+            records = records.stream().limit(count).collect(Collectors.toList());
         }
         return records;
     }
