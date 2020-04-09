@@ -4,9 +4,9 @@ Technical task to parse csv and generate reports
 
 ## Build project
 
-#### Maven project build requrement:
+#### Maven project build requirements:
 
-1. The maven version upper then 3.3.9
+1. The maven version higher then 3.3.9
 2. openJDK 8
 
 #### Maven project build command:
@@ -17,20 +17,24 @@ Execute the following under root project dirrectory right on the level of **pom.
 or
 > $mvn -U clean package verify
 
-#### Run Spring boot application:
+#### Run Spring boot applications:
+   
+Go to the roo of the project and execute:
+> $mvn -U clean package verify
 
-Can be run in two ways:
-1. > $mvn clean install spring-boot:run
-2. > $java -jar fev-lab-rest-{version}.jar
-3. > $java -jar fev-lab-ui-{version}.jar
+Go to the /target directory and execute one by one:
+> $java -jar fev-lab-rest-{version}.jar
+>
+> $java -jar fev-lab-ui-{version}.war
 
-For the local environment the application will be available via 8080 - rest and 8081 - ui ports:
-> http://localhost:8080/
-> http://localhost:8081/
+The REST API will be started on http://localhost:8080
 
-The swagger documentation can be found at
+And the UI will be started on http://localhost:8081
 
-http://localhost:8080/swagger-ui.html
+#### To verify applications
+Follow the link http://localhost:8080/swagger-ui.html to check the API documentation
+
+Follow the link http://localhost:8081/home to open welcome page
 
 #### Application profiles:
 
@@ -40,8 +44,8 @@ Application can be run in scope of three profiles:
 
 Default profile used is **dev**.
 To run application in scope of another profile use:
-> $java -jar -Dspring.profiles.active=prod ev-lab-rest-{version}.jar
-> $java -jar -Dspring.profiles.active=prod ev-lab-ui-{version}.jar
+> $java -jar -Dspring.profiles.active=prod fev-lab-rest-{version}.jar
+> $java -jar -Dspring.profiles.active=prod fev-lab-ui-{version}.war
 
 To make specific profile active by default just build jar with defined profile id:
 > $mvn clean install -P{profile_id}
@@ -50,3 +54,19 @@ or
 > $mvn -U clean package verify -P{profile_id}
 
 The **test** profile is used only in scope of test run.
+
+#### Run applications:
+Go to the roo of the project and execute:
+> $mvn -U clean package verify
+
+Go to the /target directory and execute one by one:
+> $java -jar fev-lab-rest-{version}.jar
+>
+> $java -jar fev-lab-ui-{version}.war
+
+The REST API will be started on http://localhost:8080
+And the UI will be started on http://localhost:8081
+
+### To verify applications
+Follow the link http://localhost:8080/swagger-ui.html to check the API documentation
+Follow the link http://localhost:8081/home to open welcome page
