@@ -57,7 +57,7 @@
         </tr>
         <tr>
           <td><button id="makeFileReq">Get records</button></td>
-          <td><input id="count" type="text" /></td>
+          <td><input id="count" type="text" value="18"/></td>
           <td><input id="headers" type="text" value="headers=ActMod_trq.MCD.UserAvg&headers=BattU_u.MCD.UserAvg&headers=CEngDsT_t.MCD.UserAvg"/></td>
         </tr>
       </table>
