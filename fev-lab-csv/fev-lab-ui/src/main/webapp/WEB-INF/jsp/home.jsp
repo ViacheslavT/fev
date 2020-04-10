@@ -155,7 +155,7 @@
               element.setAttribute("height", "50");
               document.body.append(element);
 
-              const labels = new Array(value.data.length);
+              const labels =Array(value.data.length).fill(null).map((_, i) => i);
 
               for (var i = 0; i < labels.length; i++) {
                 labels[i] = i;

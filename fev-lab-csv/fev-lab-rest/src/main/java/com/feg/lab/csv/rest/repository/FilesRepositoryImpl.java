@@ -60,23 +60,27 @@ public class FilesRepositoryImpl implements FilesRepository {
 
     @Override
     public List<Record> returnNumeric(final List<String> headersNames, int count) {
-        List<Record> records = recordsStorage.stream().peek(
-                record -> record.setRecords(
-                        record.getRecords().stream()
-                                .filter(BaseRecord::isNumeric)
-                                .filter(rec -> {
-                                    if (headersNames != null) {
-                                        return headersNames.contains(rec.getName());
-                                    } else {
-                                        return true;
-                                    }
-                                })
-                                .collect(Collectors.toList())
-                )
-        ).collect(Collectors.toList());
-        if (count > 0) {
-            records = records.stream().limit(count).collect(Collectors.toList());
+        List<Record> recordsResult = new ArrayList<>();
+        for (Record record: recordsStorage) {
+            List<BaseRecord> baseRecords = record.getRecords().stream()
+                    .filter(BaseRecord::isNumeric)
+                    .filter(rec -> {
+                        if (headersNames != null) {
+                            return headersNames.contains(rec.getName());
+                        } else {
+                            return true;
+                        }
+                    })
+                    .collect(Collectors.toList());
+            if (!baseRecords.isEmpty()) {
+                Record recordResult = new Record();
+                recordResult.setRecords(baseRecords);
+                recordsResult.add(recordResult);
+            }
         }
-        return records;
+        if (count > 0) {
+            recordsResult = recordsResult.stream().limit(count).collect(Collectors.toList());
+        }
+        return recordsResult;
     }
 }
