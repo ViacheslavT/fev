@@ -176,7 +176,7 @@
                           userCallback: function (tick) {
                             return tick.toString() + value.measure;
                           },
-                          beginAtZero: true,
+
                         },
                       },
                     ],
