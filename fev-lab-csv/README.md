@@ -2,6 +2,9 @@
 
 Technical task to parse csv and generate reports
 
+## NOTE
+Please keep in mind, if you're going to check a big file, either use fields headers filter and count of records, or use another tool to get JSON data. As paggination is not implemented here there could be broser performance issues due to big amount of Charts.
+
 ## Build project
 
 #### Maven project build requirements:
