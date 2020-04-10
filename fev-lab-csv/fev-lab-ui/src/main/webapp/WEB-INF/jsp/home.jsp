@@ -114,6 +114,7 @@
                     if (!firstLevelAcc[secondLevelRecord.name]) {
                       firstLevelAcc[secondLevelRecord.name] = {
                         label: secondLevelRecord.name,
+                        measure: secondLevelRecord.measure,
                         data: [],
                         fill: false,
                         backgroundColor: [
@@ -172,6 +173,9 @@
                     xAxes: [
                       {
                         ticks: {
+                          userCallback: function (tick) {
+                            return tick.toString() + value.measure;
+                          },
                           beginAtZero: true,
                         },
                       },
