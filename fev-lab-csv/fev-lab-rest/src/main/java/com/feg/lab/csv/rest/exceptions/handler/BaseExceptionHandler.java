@@ -36,8 +36,8 @@ import java.util.List;
 public class BaseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
-    public final ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-                                                                     HttpHeaders headers, HttpStatus status, WebRequest request) {
+    public final ResponseEntity<Object> handleMethodArgumentNotValid(final MethodArgumentNotValidException ex,
+                                                                     final HttpHeaders headers, final HttpStatus status, final WebRequest request) {
         List<ErrorDetails> errors = new ArrayList<>();
         ErrorCode error = ErrorCode.VALIDATION;
         for (ObjectError bindingError: ex.getBindingResult().getAllErrors()) {
@@ -50,7 +50,7 @@ public class BaseExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @Override
-    protected ResponseEntity<Object> handleBindException(BindException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleBindException(final BindException ex, final HttpHeaders headers, final HttpStatus status, final WebRequest request) {
         List<ErrorDetails> errors = new ArrayList<>();
         ErrorCode error = ErrorCode.VALIDATION;
         for (ObjectError bindingError: ex.getBindingResult().getAllErrors()) {
@@ -63,8 +63,8 @@ public class BaseExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @Override
-    protected ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex, HttpHeaders headers,
-                                                                          HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleMissingServletRequestParameter(final MissingServletRequestParameterException ex, final HttpHeaders headers,
+                                                                          final HttpStatus status, final WebRequest request) {
         List<ErrorDetails> errors = new ArrayList<>();
         ErrorCode error = ErrorCode.MISSING_PARAMETER;
         errors.add(new ErrorDetails(LocalDateTime.now(), error.getErrorCode(), error.getMessage() + " " + ex.getParameterName()
@@ -75,7 +75,7 @@ public class BaseExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @Override
-    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(final HttpMessageNotReadableException ex, final HttpHeaders headers, final HttpStatus status, final WebRequest request) {
         List<ErrorDetails> errors = new ArrayList<>();
         ErrorCode error = ErrorCode.VALIDATION;
         ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), error.getErrorCode(), error.getMessage(), ex.getLocalizedMessage());
@@ -86,12 +86,12 @@ public class BaseExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(ClientNotSupportedException.class)
-    public final ResponseEntity<ErrorRS> handleClientNotSupportedException(ClientNotSupportedException ex, WebRequest request) {
+    public final ResponseEntity<ErrorRS> handleClientNotSupportedException(final ClientNotSupportedException ex, final WebRequest request) {
         return prepareErrorResponse(ex);
     }
 
     @ExceptionHandler(ClientInternalException.class)
-    public final ResponseEntity<ErrorRS> handleClientInternalException(ClientInternalException ex, WebRequest request) {
+    public final ResponseEntity<ErrorRS> handleClientInternalException(final ClientInternalException ex, final WebRequest request) {
         return prepareErrorResponse(ex);
     }
 

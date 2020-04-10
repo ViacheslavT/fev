@@ -10,7 +10,7 @@ public class ClientInternalException extends BaseClientException {
 
     private static final ErrorCode errorCode = ErrorCode.INTERNAL_ERROR;
 
-    public ClientInternalException(String message) {
+    public ClientInternalException(final String message) {
         super(errorCode, message);
     }
 }

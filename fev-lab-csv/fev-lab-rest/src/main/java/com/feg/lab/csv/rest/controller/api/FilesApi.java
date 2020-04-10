@@ -1,7 +1,6 @@
 package com.feg.lab.csv.rest.controller.api;
 
 import com.feg.lab.csv.rest.model.dto.FilesToLoadRS;
-import com.feg.lab.csv.rest.model.dto.RecordsRS;
 import com.feg.lab.csv.rest.model.dto.base.ErrorRS;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -12,8 +11,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 /**
  * Created by: Viachaslau Tsitsiankou.

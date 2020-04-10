@@ -16,5 +16,5 @@ public class BaseRecord {
     private String name;
     private String measure;
     private String value;
-    private boolean isNumeric;
+    private boolean numeric;
 }

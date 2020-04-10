@@ -50,11 +50,8 @@ public class RecordsController implements RecordsApi {
 
     @Override
     @GetMapping(value = "/numeric", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RecordsRS> getNumericRecords(@RequestParam(value = "count", required = false) Integer count,
+    public ResponseEntity<RecordsRS> getNumericRecords(@RequestParam(value = "count", required = false) final int count,
                                                        @RequestParam(value = "headers", required = false) final List<String> headers) {
-        if (count == null) {
-            count = 0;
-        }
         return ResponseEntity.ok(filesService.getNumericRecords(count, headers));
     }
 

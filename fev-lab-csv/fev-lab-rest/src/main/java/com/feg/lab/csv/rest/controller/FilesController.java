@@ -2,7 +2,6 @@ package com.feg.lab.csv.rest.controller;
 
 import com.feg.lab.csv.rest.controller.api.FilesApi;
 import com.feg.lab.csv.rest.model.dto.FilesToLoadRS;
-import com.feg.lab.csv.rest.model.dto.RecordsRS;
 import com.feg.lab.csv.rest.service.FilesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
-import java.util.List;
 
 /**
  * Created by: Viachaslau Tsitsiankou.

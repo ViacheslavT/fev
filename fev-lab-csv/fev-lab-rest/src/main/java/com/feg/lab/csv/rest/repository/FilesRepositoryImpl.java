@@ -28,17 +28,17 @@ public class FilesRepositoryImpl implements FilesRepository {
     }
 
     @Override
-    public List<Record> findAll(int count) {
+    public List<Record> findAll(final int count) {
         return recordsStorage.stream().limit(count).collect(Collectors.toList());
     }
 
     @Override
-    public void saveAll(List<Record> records) {
+    public void saveAll(final List<Record> records) {
         recordsStorage.addAll(records);
     }
 
     @Override
-    public void save(Record record) {
+    public void save(final Record record) {
         recordsStorage.add(record);
     }
 
@@ -54,7 +54,7 @@ public class FilesRepositoryImpl implements FilesRepository {
     }
 
     @Override
-    public List<Record> returnByHeadersAndLimit(List<String> headersNames, int count) {
+    public List<Record> returnByHeadersAndLimit(final List<String> headersNames, int count) {
         return returnByHeaders(headersNames).stream().limit(count).collect(Collectors.toList());
     }
 

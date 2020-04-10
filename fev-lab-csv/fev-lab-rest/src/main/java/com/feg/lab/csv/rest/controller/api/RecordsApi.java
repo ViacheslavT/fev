@@ -32,7 +32,7 @@ public interface RecordsApi {
             @ApiResponse(responseCode = "200", description = "successful operation.", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = RecordsRS.class))}),
             @ApiResponse(responseCode = "500", description = "Any internal error.", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorRS.class))})
     })
-    ResponseEntity<RecordsRS> getNumericRecords(@RequestParam(value = "count", required = false) final Integer count, @RequestParam(value = "headers", required = false) final List<String> headers);
+    ResponseEntity<RecordsRS> getNumericRecords(@RequestParam(value = "count", required = false) final int count, @RequestParam(value = "headers", required = false) final List<String> headers);
 
     @Operation(summary = "Removes records", description = "Removes created records.", tags = { "records" })
     @ApiResponses(value = {

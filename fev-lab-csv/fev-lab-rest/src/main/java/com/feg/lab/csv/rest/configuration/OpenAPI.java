@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class OpenAPI {
 
     @Bean
-    public io.swagger.v3.oas.models.OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
+    public io.swagger.v3.oas.models.OpenAPI customOpenAPI(@Value("${springdoc.version}") final String appVersion) {
         return new io.swagger.v3.oas.models.OpenAPI()
                 .info(new Info().title("FEV csv REST API").version(appVersion).description(
                         "This is a gateway server API for manipulating with CSV files and database saved reports."));

@@ -14,5 +14,5 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class RecordsRS {
 
-    List<Record> records;
+    private List<Record> records;
 }

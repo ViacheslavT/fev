@@ -17,8 +17,8 @@ public interface FilesService {
     void uploadFile(final MultipartFile file);
     void saveFile(final String fileName);
     RecordsRS getRecordsByHeaders(final List<String> headersNames);
-    RecordsRS getRecordsByHeadersAndLimit(int count, final List<String> headersNames);
+    RecordsRS getRecordsByHeadersAndLimit(final int count, final List<String> headersNames);
     RecordsRS getAllRecords();
-    RecordsRS getAllRecords(int count);
-    RecordsRS getNumericRecords(int count, final List<String> headers);
+    RecordsRS getAllRecords(final int count);
+    RecordsRS getNumericRecords(final int count, final List<String> headers);
 }

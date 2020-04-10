@@ -40,12 +40,14 @@ public enum  ErrorCode {
         return httpStatus;
     }
 
-    public static int getStatusByErrorCode(int errorCode) {
+    public static int getStatusByErrorCode(final int errorCode) {
+        int result = 500;
         for (ErrorCode code : ErrorCode.values()) {
             if (code.getErrorCode() == errorCode) {
-                return code.getHttpStatus();
+                result = code.getHttpStatus();
+                break;
             }
         }
-        return 500;
+        return result;
     }
 }

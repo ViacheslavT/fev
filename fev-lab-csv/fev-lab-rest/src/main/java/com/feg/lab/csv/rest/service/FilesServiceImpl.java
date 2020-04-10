@@ -14,13 +14,11 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -65,13 +63,13 @@ public class FilesServiceImpl implements FilesService {
     }
 
     @Override
-    public void uploadFile(MultipartFile file) {
+    public void uploadFile(final MultipartFile file) {
         //TODO: to be implemented if required
         throw new ClientNotSupportedException("Upload file operation is not supported yet");
     }
 
     @Override
-    public void saveFile(String fileName) {
+    public void saveFile(final String fileName) {
         try {
             filesRepository.saveAll(readFile(fileName));
         } catch (IOException e) {
@@ -84,14 +82,14 @@ public class FilesServiceImpl implements FilesService {
     }
 
     @Override
-    public RecordsRS getRecordsByHeaders(List<String> headersNames) {
+    public RecordsRS getRecordsByHeaders(final List<String> headersNames) {
         RecordsRS response = new RecordsRS();
         response.setRecords(filesRepository.returnByHeaders(headersNames));
         return response;
     }
 
     @Override
-    public RecordsRS getRecordsByHeadersAndLimit(int count, List<String> headersNames) {
+    public RecordsRS getRecordsByHeadersAndLimit(final int count, final List<String> headersNames) {
         RecordsRS response = new RecordsRS();
         response.setRecords(filesRepository.returnByHeadersAndLimit(headersNames, count));
         return response;
@@ -105,30 +103,22 @@ public class FilesServiceImpl implements FilesService {
     }
 
     @Override
-    public RecordsRS getAllRecords(int count) {
+    public RecordsRS getAllRecords(final int count) {
         RecordsRS response = new RecordsRS();
         response.setRecords(filesRepository.findAll(count));
         return response;
     }
 
     @Override
-    public RecordsRS getNumericRecords(int count, final List<String> headers) {
+    public RecordsRS getNumericRecords(final int count, final List<String> headers) {
         RecordsRS response = new RecordsRS();
         response.setRecords(filesRepository.returnNumeric(headers, count));
         return response;
     }
 
     private List<Record> readFile(final String fileName) throws IOException, CsvValidationException {
-        InputStreamReader targetStream;
-        try {
-            final File file =  ResourceUtils.getFile(
-                    "classpath:data/csv/" + fileName);
-            targetStream = new InputStreamReader(new FileInputStream(file), StandardCharsets.ISO_8859_1);
-        } catch (FileNotFoundException e) {
-            log.error("No such file.", e);
-            throw new ClientInternalException(e.getLocalizedMessage());
-        }
-        CSVReader csvReader = new CSVReader(targetStream);
+        InputStream stream = this.getClass().getClassLoader().getResourceAsStream("data/csv/" + fileName);
+        CSVReader csvReader = new CSVReader(new InputStreamReader(Objects.requireNonNull(stream), StandardCharsets.ISO_8859_1));
         String[] line;
         List<String[]> headersList = new ArrayList<>();
         List<Record> records = new ArrayList<>();
@@ -159,7 +149,7 @@ public class FilesServiceImpl implements FilesService {
                 records.add(record);
             }
         }
-        targetStream.close();
+        stream.close();
         csvReader.close();
         return records;
     }

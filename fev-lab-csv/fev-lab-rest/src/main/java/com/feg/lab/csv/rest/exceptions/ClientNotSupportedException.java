@@ -10,7 +10,7 @@ public class ClientNotSupportedException extends BaseClientException {
 
     private static ErrorCode errorCode = ErrorCode.NOT_FOUND;
 
-    public ClientNotSupportedException(String message) {
+    public ClientNotSupportedException(final String message) {
         super(errorCode, message);
     }
 }

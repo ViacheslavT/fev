@@ -14,12 +14,9 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Record {
 
-    List<BaseRecord> records;
+    private List<BaseRecord> records = new ArrayList<>();
 
     public void addRecord(final BaseRecord record) {
-        if (records == null) {
-            records = new ArrayList<>();
-        }
         records.add(record);
     }
 }
