@@ -70,3 +70,7 @@ And the UI will be started on http://localhost:8081
 ### To verify applications
 Follow the link http://localhost:8080/swagger-ui.html to check the API documentation
 Follow the link http://localhost:8081/home to open welcome page
+
+### Example:
+Example of records filtered by three numeric fields from small csv file
+![Example of records filtered by three numeric fields from small csv file](https://github.com/ViacheslavT/fev/blob/master/fev-lab-csv/example.png)
