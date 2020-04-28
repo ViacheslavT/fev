@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,13 +52,12 @@ public class FilesServiceImpl implements FilesService {
 
     @Override
     public FilesToLoadRS getAllFilesToLoad() {
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        URL url = loader.getResource(filesToLoadPath);
-        String path = Objects.requireNonNull(url).getPath();
-        File[] files = new File(path).listFiles();
         FilesToLoadRS response = new FilesToLoadRS();
-        for (File file: Objects.requireNonNull(files)) {
-            response.addFile(file.getName());
+        if (filesToLoadPath != null) {
+            String[] files = filesToLoadPath.split(",");
+            for (String file: files) {
+                response.addFile(file);
+            }
         }
         return response;
     }

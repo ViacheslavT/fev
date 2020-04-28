@@ -31,4 +31,4 @@ springdoc:
 
 files:
   path:
-    to-load: "data/csv/"
+    to-load: "example.csv,example_small.csv"
