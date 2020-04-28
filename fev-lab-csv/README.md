@@ -79,3 +79,5 @@ Follow the link http://localhost:8081/home to open welcome page
 ### Example:
 Example of records filtered by three numeric fields from small csv file
 ![Example of records filtered by three numeric fields from small csv file](https://github.com/ViacheslavT/fev/blob/master/fev-lab-csv/example.png)
+
+![Example of records filtered by three numeric fields from small csv file 2](https://github.com/ViacheslavT/fev/blob/master/fev-lab-csv/example2.png)
