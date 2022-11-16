@@ -33,7 +33,7 @@
         <!-- ### ARTIFACTS ### -->
         <apache.commons.lang3.version>3.9</apache.commons.lang3.version>
         <lombok.version>1.18.10</lombok.version>
-        <jackson.databind.version>2.9.7</jackson.databind.version>
+        <jackson.databind.version>2.12.7.1</jackson.databind.version>
         <jackson.dataformat.xml.version>2.9.7</jackson.dataformat.xml.version>
         <spring.web.version>5.1.8.RELEASE</spring.web.version>
         <jacoco.version>0.8.3</jacoco.version>
